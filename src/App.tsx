@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
 
 const serverConnection = import.meta.env.VITE_API_URL
-
+console.log(serverConnection)
 function App() {
   const [usuarios, setUsuarios] = useState([{ id: 0, nome: '' }]);
   useEffect(() => {
     fetch(`${serverConnection}/api/usuarios`)
       .then(res => res.json())
-      // .then(data => {
-      //   console.log('Resposta da API:', data); // veja aqui!
-      //   setUsuarios(data);
-      // })
-      // .catch(err => console.error('Erro ao buscar usuários:', err));
-    .then(setUsuarios);
+      .then(data => {
+        console.log('Resposta da API:', data); // veja aqui!
+        setUsuarios(data);
+      })
+      .catch(err => console.error('Erro ao buscar usuários:', err));
+    // .then(setUsuarios);
   }, []);
 
   return (
